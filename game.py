@@ -121,7 +121,7 @@ def set_up_game():
 
     buttons = [Button(17),Button(6)]
     buzzers = [TonalBuzzer(27),TonalBuzzer(5)]
-    leds = [LED(19(),LED(13))]
+    leds = [LED(19),LED(13)]
 
     player_list = []
     for i in range(2):
