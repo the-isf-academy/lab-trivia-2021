@@ -36,7 +36,8 @@ class TerminalView:
         guess = input("Guess: ")
         return guess
 
-    def give_point(self):
+    def give_point(self,players):
+
         player_name = input("Player Name: ")
         return player_name
 
