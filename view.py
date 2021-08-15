@@ -38,9 +38,9 @@ class TerminalView:
 
     def give_point(self, players):
         for i in range(len(players)):
-            print("   " + i + ". " + players[i].get_name())
+            print("   " + str(i) + ". " + players[i].get_name())
 
-        player_correct = input("Which player answered correctly? (select num): ")
+        player_correct = int(input("   > Which player answered correctly? (select num): "))
         players[player_correct].add_score()
 
     def correctAnswer(self):
@@ -52,11 +52,12 @@ class TerminalView:
     def endGame(self, players):
         print("\n--------------------------")
 
-        print("--- Final Scores ---")
+        print("----- Final Score -----")
         for i in range(len(players)):
-            print("   " + i + ". " + players[i].get_name() + ": " + players[i].get_score())
+            print("   " + str(i) + ". " + players[i].get_name() + ": " + str(players[i].get_score()))
 
 
+        print("--------------------------")
         print("--- Thanks for Playing ---")
         print("--------------------------")
         return

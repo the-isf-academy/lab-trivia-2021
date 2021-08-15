@@ -32,16 +32,16 @@ class TriviaGame:
         """ Plays the trivia game (or at least one round of it)/
         """
 
-        for prompt in self.triviaQuestions:
+        for prompt in self.triviaQuestions[0:1]:
             self.view.show_question(self.questionNum,prompt.questionPrompt)
 
             guessed = False
 
             while guessed == False:
                 if self.players[0].get_button().is_pressed:
-                    # self.players[0].get_buzzer().play(Tone(60))
-                    # sleep(1)
-                    # self.players[0].get_buzzer().stop()
+                    self.players[0].get_buzzer().play(Tone(midi=60))
+                    sleep(1)
+                    self.players[0].get_buzzer().stop()
 
                     if guessed == False:
                         guessed = True
@@ -50,36 +50,18 @@ class TriviaGame:
                         self.players[0].get_led().off()
 
                 elif self.players[1].get_button().is_pressed:
-                        # self.players[1].get_buzzer().play(Tone(60))                                             
-                        # sleep(1)
-                        # self.players[1].get_buzzer().stop()                                                     
-                                                                                        
-                        if guessed == False:                                                  
-                            guessed = True
-                            self.players[1].get_led().on()
-                            sleep(1)
-                            self.players[1].get_led().off() 
+                    self.players[1].get_buzzer().play(Tone(midi=60))                                             
+                    sleep(1)
+                    self.players[1].get_buzzer().stop()                                                     
+                    if guessed == False:                                                  
+                        guessed = True
+                        self.players[1].get_led().on()
+                        sleep(1)
+                        self.players[1].get_led().off() 
 
             self.view.give_point(self.players)
 
-
-
-            # if len(prompt.choices)>1:
-            #     self.guess = self.view.show_multiple_choice(prompt.choices)
-            # else:
-            #     self.guess = self.view.show_fill_in_the_blank(prompt.answer)
-
-
-            # if prompt.check_guess(self.guess) == True:
-            #     self.score += 1
-            #     self.view.correctAnswer()
-            # else:
-            #     self.view.wrongAnswer()
-
-            # self.questionNum += 1
-
-            # self.view.show_score(self.score,self.questionNum)
-        self.view.endGame()
+        self.view.endGame(self.players)
 
     def triviaQuestionsInit(self,triviaFile):
         """ Reads the trivia questions file from the path triviaFile and adds Question objects to the
@@ -128,7 +110,7 @@ def set_up_game():
         print("Enter Player",i,"name:")
         player_name = input("   ")
         player_list.append(Player(player_name,buttons[i],buzzers[i],leds[i]))
-
+    print('--------------------------')
     triviaFile = "trivia.txt"
     game = TriviaGame(triviaFile,player_list)
     game.play()
