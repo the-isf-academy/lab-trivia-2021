@@ -45,9 +45,9 @@ class TriviaGame:
 
                     if guessed == False:
                         guessed = True
-                        self.players[0].get_led.on()
+                        self.players[0].get_led().on()
                         sleep(1)
-                        self.players[0].get_led.off()
+                        self.players[0].get_led().off()
 
                 elif self.players[1].get_button().is_pressed:
                         # self.players[1].get_buzzer().play(Tone(60))                                             
@@ -56,9 +56,9 @@ class TriviaGame:
                                                                                         
                         if guessed == False:                                                  
                             guessed = True
-                            self.players[1].get_led.on()
+                            self.players[1].get_led().on()
                             sleep(1)
-                            self.players[1].get_led.off() 
+                            self.players[1].get_led().off() 
 
             self.view.give_point(self.players)
 
@@ -121,7 +121,7 @@ def set_up_game():
 
     buttons = [Button(17),Button(6)]
     buzzers = [TonalBuzzer(27),TonalBuzzer(5)]
-    leds = [LED(19(),LED(13))]
+    leds = [LED(19),LED(13)]
 
     player_list = []
     for i in range(2):
