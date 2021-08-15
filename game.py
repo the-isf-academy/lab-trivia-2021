@@ -60,7 +60,7 @@ class TriviaGame:
                             sleep(1)
                             self.players[1].get_led.off() 
 
-            self.view.give_point()
+            self.view.give_point(self.players)
 
 
 

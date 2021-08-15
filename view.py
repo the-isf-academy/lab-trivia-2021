@@ -36,9 +36,12 @@ class TerminalView:
         guess = input("Guess: ")
         return guess
 
-    def give_point(self):
-        player_name = input("Player Name: ")
-        return player_name
+    def give_point(self, players):
+        for i in range(len(players)):
+            print("   " + i + ". " + players[i].get_name())
+
+        player_correct = input("Which player answered correctly? (select num): ")
+        players[player_correct].add_score()
 
     def correctAnswer(self):
         print("-- Correct! --\n")
@@ -46,8 +49,14 @@ class TerminalView:
     def wrongAnswer(self):
         print("-- Incorrect! --\n")
 
-    def endGame(self):
+    def endGame(self, players):
         print("\n--------------------------")
+
+        print("--- Final Scores ---")
+        for i in range(len(players)):
+            print("   " + i + ". " + players[i].get_name() + ": " + players[i].get_score())
+
+
         print("--- Thanks for Playing ---")
         print("--------------------------")
         return
